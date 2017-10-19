@@ -19,15 +19,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Models", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeSlip.Console", "EmployeeSlip.Console\EmployeeSlip.Console.csproj", "{D39B1F6B-D239-45FA-9696-35442F4EC5B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain.Interfaces", "EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain.Interfaces.csproj", "{15C505ED-5084-47EC-B440-44BE0A39161D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain.Interfaces", "EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain.Interfaces.csproj", "{15C505ED-5084-47EC-B440-44BE0A39161D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain", "EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain\EmployeePayslip.Domain.csproj", "{B8D386D6-ADDB-41B1-9F9B-16CA34590C69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain", "EmployeePayslip.Domain\EmployeePayslip.Domain.csproj", "{B8D386D6-ADDB-41B1-9F9B-16CA34590C69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain.UnitTests", "EmployeePayslip.DataAccess.UnitTests\EmployeePayslip.Domain.UnitTests\EmployeePayslip.Domain.UnitTests.csproj", "{3BC33728-E536-4530-8861-8F9514F136B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain.UnitTests", "EmployeePayslip.Domain.UnitTests\EmployeePayslip.Domain.UnitTests.csproj", "{3BC33728-E536-4530-8861-8F9514F136B1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.DataAccess", "EmployeePayslip.DataAccess\EmployeePayslip.DataAccess.csproj", "{99790791-7941-4E7D-8AA7-D81FBDE11BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.DataAccess.Interfaces", "EmployeePayslip.DataAccess\EmployeePayslip.DataAccess.Interfaces\EmployeePayslip.DataAccess.Interfaces.csproj", "{844BFEA4-51EA-4730-AAB0-40951F0A76F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.DataAccess.Interfaces", "EmployeePayslip.DataAccess.Interfaces\EmployeePayslip.DataAccess.Interfaces.csproj", "{844BFEA4-51EA-4730-AAB0-40951F0A76F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
