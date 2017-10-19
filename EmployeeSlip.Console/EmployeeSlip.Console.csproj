@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeePayslip.Models\EmployeePayslip.Models.csproj" />
+    <ProjectReference Include="..\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain\EmployeePayslip.Domain.csproj" />
+    <ProjectReference Include="..\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain.Interfaces.csproj" />
+  </ItemGroup>
 </Project>

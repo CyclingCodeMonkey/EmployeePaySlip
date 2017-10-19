@@ -13,4 +13,10 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeePayslip.DataAccess\EmployeePayslip.DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="EmployeePayslip.Domain.UnitTests\UnitTest1.cs" />
+  </ItemGroup>
 </Project>

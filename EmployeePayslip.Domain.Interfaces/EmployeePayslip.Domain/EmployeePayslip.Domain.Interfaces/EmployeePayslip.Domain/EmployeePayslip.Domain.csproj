@@ -6,5 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmployeePayslip.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\..\..\..\EmployeePayslip.DataAccess\EmployeePayslip.DataAccess.csproj" />
+    <ProjectReference Include="..\..\..\..\EmployeePayslip.DataAccess\EmployeePayslip.DataAccess.Interfaces\EmployeePayslip.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\..\..\..\EmployeePayslip.Models\EmployeePayslip.Models.csproj" />
   </ItemGroup>
 </Project>
