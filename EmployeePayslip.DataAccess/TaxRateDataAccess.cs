@@ -45,7 +45,7 @@ namespace EmployeePayslip.DataAccess
                     new TaxRate {Rate = 0,    TaxableIncomeStart = 0,     TaxableIncomeEnd = 6000},
                     new TaxRate {Rate = 0.15, TaxableIncomeStart = 6001,  TaxableIncomeEnd = 37000},
                     new TaxRate {Rate = 0.30, TaxableIncomeStart = 37001, TaxableIncomeEnd = 80000},
-                    new TaxRate {Rate = 0.37, TaxableIncomeStart = 87001, TaxableIncomeEnd = 180000},
+                    new TaxRate {Rate = 0.37, TaxableIncomeStart = 80001, TaxableIncomeEnd = 180000},
                     new TaxRate {Rate = 0.45, TaxableIncomeStart = 180001,TaxableIncomeEnd = 999999999}
                 }
             };
