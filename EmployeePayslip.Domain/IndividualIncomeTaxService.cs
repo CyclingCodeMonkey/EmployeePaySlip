@@ -1,13 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using EmployeePayslip.DataAccess;
+using EmployeePayslip.DataAccess.Interfaces;
+using EmployeePayslip.Domain.Interfaces;
+using EmployeePayslip.Models;
 
 namespace EmployeePayslip.Domain
 {
-    public class IndividualIncomeTaxService
+    public class IndividualIncomeTaxService : IIndividualIncomeTaxService
     {
         const double months = 12;
-        private int _incomeTax = -1;
-        private int _previousAnnualSalary = 0;
+        int _incomeTax = -1;
+        int _previousAnnualSalary = 0;
+
+        readonly ITaxRateDataAccess _taxRateDataAccess;
+
+        public IndividualIncomeTaxService()
+        {
+            _taxRateDataAccess = new TaxRateDataAccess();   
+        }
+
+        public IndividualIncomeTaxService(ITaxRateDataAccess taxRateDataAccess)
+        {
+            _taxRateDataAccess = taxRateDataAccess;
+        }
 
         public int CalculateGrossIncome(double annualSalary)
         {
@@ -26,30 +43,34 @@ namespace EmployeePayslip.Domain
             _previousAnnualSalary = annualSalary;
             // get the income tax rates for the current year
             // if nothing is returned then throw error
-            foreach (var taxBracket in taxBrackets)
+            var taxRates = new IncomeTaxRates();
+            double incomeTax = 0.0;
+            foreach (var taxBracket in taxRates.TaxBrackets)
             {
                 if (annualSalary > taxBracket.Max)
                 {
-                    _incomeTax += (taxBracket.Max - taxBracket.Min) * taxBracket.Rate;
+                    incomeTax += taxBracket.Amount;
                 }
                 else //if (annualSalary <=  taxBracket.max)
                 { 
-                    _incomeTax += (annualSalary - taxBracket.Max) * taxBracket.Rate; 
+                    incomeTax += (annualSalary - taxBracket.Max) * taxBracket.Rate; 
                 }
             }
+            _incomeTax = (int)Math.Round(incomeTax, MidpointRounding.AwayFromZero);
             return _incomeTax;
         }
 
         public async Task<int> CalculateNetIncomeAsync(int annualSalary, 
                                                        int financialYear = 2018)
         {
-            return grossIncome - (await CalculateIncomeTaxAsync(annualSalary, financialYear));
+            return CalculateGrossIncome(annualSalary) 
+                - (await CalculateIncomeTaxAsync(annualSalary, financialYear));
         }
 
         public int CalculateSuper(double annualSalary, double superRate)
         {
             var super = CalculateGrossIncome(annualSalary) * superRate;
-            return Math.Round(super, MidpointRounding.AwayFromZero);
+            return (int) Math.Round(super, MidpointRounding.AwayFromZero);
         }
     }
 }

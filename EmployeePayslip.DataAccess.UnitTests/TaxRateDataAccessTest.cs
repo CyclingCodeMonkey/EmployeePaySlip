@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using EmployeePayslip.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EmployeePayslip.DataAccess.UnitTests
@@ -8,11 +9,11 @@ namespace EmployeePayslip.DataAccess.UnitTests
     public class TaxRateDataAccessTest
     {
         [TestMethod]
-        public void TaxRate_CountryIsInvalid_ShouldThrowNotImplementedException_Test
+        public void TaxRate_CountryIsInvalid_ShouldThrowNotImplementedException_Test()
         {
             var target = new TaxRateDataAccess();
         
-            Action act = () => target.
+            //Action act = () => target.
             
         }
     }

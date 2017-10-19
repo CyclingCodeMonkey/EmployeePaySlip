@@ -6,24 +6,24 @@ using EmployeePayslip.Models;
 
 namespace EmployeePayslip.DataAccess
 {
-    public class TaxBracketDataAccess : ITaxBracketDataAccess
+    public class TaxRateDataAccess : ITaxRateDataAccess
     {
-        public async Task<IncomeTaxBrackets> GetIndividualIncomeTaxBracketsAsync(int year, string country = "AU")
+        public async Task<IncomeTaxRates> GetIndividualIncomeTaxRatesAsync(int year, string country = "AU")
         {
             if (string.IsNullOrWhiteSpace(country) || country.ToUpper() != "AU")
             {
                 throw new NotImplementedException("Income Tax Rates implemented for Australia only.");
             }
 
-
+            return null;
         }
 
 
-        private IList<IncomeTaxBrackets> GetIncomeTaxBrackets()
+        private IList<IncomeTaxRates> GetIncomeTaxBrackets()
         {
             // data sourced from https://www.ato.gov.au/Rates/Individual-income-tax-for-prior-years/
 
-            var incomeTaxBracketsList = new List<IncomeTaxRates>();
+            var incomeTaxRatesList = new List<IncomeTaxRates>();
             var rates = new IncomeTaxRates
             {
                 FinancialYear = 2013,
@@ -36,7 +36,7 @@ namespace EmployeePayslip.DataAccess
                     new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxBracketsList.Add(rates);
+            incomeTaxRatesList.Add(rates);
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2012,
@@ -49,7 +49,7 @@ namespace EmployeePayslip.DataAccess
                     new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxBracketsList.Add(rates);
+            incomeTaxRatesList.Add(rates);
 
             rates = new IncomeTaxRates
             {
@@ -63,7 +63,7 @@ namespace EmployeePayslip.DataAccess
                     new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxBracketsList.Add(rates);
+            incomeTaxRatesList.Add(rates);
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2009,
@@ -76,7 +76,7 @@ namespace EmployeePayslip.DataAccess
                     new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxBracketsList.Add(rates);
+            incomeTaxRatesList.Add(rates);
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2008,
@@ -89,7 +89,7 @@ namespace EmployeePayslip.DataAccess
                     new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxBracketsList.Add(rates);
+            incomeTaxRatesList.Add(rates);
 
             return incomeTaxRatesList;
         }
