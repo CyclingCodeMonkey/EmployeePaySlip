@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EmployeePayslip.DataAccess.Interfaces;
@@ -15,7 +17,7 @@ namespace EmployeePayslip.DataAccess
                 throw new NotImplementedException("Income Tax Rates implemented for Australia only.");
             }
 
-            
+
         }
 
 

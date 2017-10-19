@@ -1,4 +1,5 @@
-﻿namespace EmployeePayslip.Models
+﻿using System;
+namespace EmployeePayslip.Models
 {
     public class TaxRate
     {
@@ -6,4 +7,5 @@
         public int TaxableIncomeEnd { get; set; }
         public double Rate { get; set; }
     }
+
 }
