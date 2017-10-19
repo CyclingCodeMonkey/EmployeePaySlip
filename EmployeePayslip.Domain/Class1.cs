@@ -24,15 +24,15 @@ namespace EmployeePayslip.Domain
     		_previousAnnualSalary = annualSalary;
     		// get the income tax rates for the current year
     		// if nothing is returned then throw error
-    		// foreach(var taxBracket in taxBrackets)
-    		// { 
-    		// 	if (annualSalary > taxBracket.max)
-    		//  {  _incomeTax += (taxBracket.Max - taxBracket.Min) * rate
-    		//  }
-    		//  else //if (annualSalary <=  taxBracket.max)
-    		//  {  _incomeTax += (annualSalary - taxBracket.max) * rate} 
-    		// }
-    		// return _incomeTax;
+    		foreach(var taxBracket in taxBrackets)
+    		{ 
+    		 	if (annualSalary > taxBracket.max)
+    		  {  _incomeTax += (taxBracket.Max - taxBracket.Min) * rate
+    		  }
+    		  else //if (annualSalary <=  taxBracket.max)
+    		  {  _incomeTax += (annualSalary - taxBracket.max) * rate} 
+    		 }
+    		 return _incomeTax;
     	}
 
     	public async Task<int> CalculateNetIncomeAsync(int annualSalary, int financialYear = 2018)
