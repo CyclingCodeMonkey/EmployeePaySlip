@@ -4,4 +4,7 @@
     <TargetFramework>netcoreapp1.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="TaxRate.cs" />
+  </ItemGroup>
 </Project>

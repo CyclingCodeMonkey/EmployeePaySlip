@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EmployeePayslip.DataAccess.Interfaces;
@@ -8,9 +6,9 @@ using EmployeePayslip.Models;
 
 namespace EmployeePayslip.DataAccess
 {
-    public class TaxRateDataAccess : ITaxRateDataAccess
+    public class TaxBracketDataAccess : ITaxBracketDataAccess
     {
-        public async Task<IncomeTaxRates> GetIndividualIncomeTaxRatesAsync(int year, string country = "AU")
+        public async Task<IncomeTaxBrackets> GetIndividualIncomeTaxBracketsAsync(int year, string country = "AU")
         {
             if (string.IsNullOrWhiteSpace(country) || country.ToUpper() != "AU")
             {
@@ -21,77 +19,77 @@ namespace EmployeePayslip.DataAccess
         }
 
 
-        private IList<IncomeTaxRates> GetIncomeTaxRates()
+        private IList<IncomeTaxBrackets> GetIncomeTaxBrackets()
         {
             // data sourced from https://www.ato.gov.au/Rates/Individual-income-tax-for-prior-years/
 
-            var incomeTaxRatesList = new List<IncomeTaxRates>();
+            var incomeTaxBracketsList = new List<IncomeTaxRates>();
             var rates = new IncomeTaxRates
             {
                 FinancialYear = 2013,
-                TaxRates = new List<TaxRate>
+                TaxBrackets = new List<TaxBracket>
                 {
-                    new TaxRate {Rate = 0,    TaxableIncomeStart = 0,     TaxableIncomeEnd = 18200},
-                    new TaxRate {Rate = 0.19, TaxableIncomeStart = 18201, TaxableIncomeEnd = 37000},
-                    new TaxRate {Rate = 0.325,TaxableIncomeStart = 37001, TaxableIncomeEnd = 87000},
-                    new TaxRate {Rate = 0.37, TaxableIncomeStart = 87001, TaxableIncomeEnd = 180000},
-                    new TaxRate {Rate = 0.45, TaxableIncomeStart = 180001,TaxableIncomeEnd = 999999999}
+                    new TaxBracket {Rate = 0,    Min = 0,     Max = 18200},
+                    new TaxBracket {Rate = 0.19, Min = 18201, Max = 37000},
+                    new TaxBracket {Rate = 0.325,Min = 37001, Max = 87000},
+                    new TaxBracket {Rate = 0.37, Min = 87001, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxRatesList.Add(rates);
+            incomeTaxBracketsList.Add(rates);
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2012,
-                TaxRates = new List<TaxRate>
+                TaxBrackets = new List<TaxBracket>
                 {
-                    new TaxRate {Rate = 0,    TaxableIncomeStart = 0,     TaxableIncomeEnd = 6000},
-                    new TaxRate {Rate = 0.15, TaxableIncomeStart = 6001,  TaxableIncomeEnd = 37000},
-                    new TaxRate {Rate = 0.30, TaxableIncomeStart = 37001, TaxableIncomeEnd = 80000},
-                    new TaxRate {Rate = 0.37, TaxableIncomeStart = 80001, TaxableIncomeEnd = 180000},
-                    new TaxRate {Rate = 0.45, TaxableIncomeStart = 180001,TaxableIncomeEnd = 999999999}
+                    new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
+                    new TaxBracket {Rate = 0.15, Min = 6001,  Max = 37000},
+                    new TaxBracket {Rate = 0.30, Min = 37001, Max = 80000},
+                    new TaxBracket {Rate = 0.37, Min = 80001, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxRatesList.Add(rates);
+            incomeTaxBracketsList.Add(rates);
 
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2010,
-                TaxRates = new List<TaxRate>
+                TaxBrackets = new List<TaxBracket>
                 {
-                    new TaxRate {Rate = 0,    TaxableIncomeStart = 0,     TaxableIncomeEnd = 6000},
-                    new TaxRate {Rate = 0.15, TaxableIncomeStart = 6001,  TaxableIncomeEnd = 35000},
-                    new TaxRate {Rate = 0.30, TaxableIncomeStart = 35001, TaxableIncomeEnd = 80000},
-                    new TaxRate {Rate = 0.38, TaxableIncomeStart = 80001, TaxableIncomeEnd = 180000},
-                    new TaxRate {Rate = 0.45, TaxableIncomeStart = 180001,TaxableIncomeEnd = 999999999}
+                    new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
+                    new TaxBracket {Rate = 0.15, Min = 6001,  Max = 35000},
+                    new TaxBracket {Rate = 0.30, Min = 35001, Max = 80000},
+                    new TaxBracket {Rate = 0.38, Min = 80001, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxRatesList.Add(rates);
+            incomeTaxBracketsList.Add(rates);
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2009,
-                TaxRates = new List<TaxRate>
+                TaxBrackets = new List<TaxBracket>
                 {
-                    new TaxRate {Rate = 0,    TaxableIncomeStart = 0,     TaxableIncomeEnd = 6000},
-                    new TaxRate {Rate = 0.15, TaxableIncomeStart = 6001,  TaxableIncomeEnd = 34000},
-                    new TaxRate {Rate = 0.30, TaxableIncomeStart = 34001, TaxableIncomeEnd = 80000},
-                    new TaxRate {Rate = 0.40, TaxableIncomeStart = 80001, TaxableIncomeEnd = 180000},
-                    new TaxRate {Rate = 0.45, TaxableIncomeStart = 180001,TaxableIncomeEnd = 999999999}
+                    new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
+                    new TaxBracket {Rate = 0.15, Min = 6001,  Max = 34000},
+                    new TaxBracket {Rate = 0.30, Min = 34001, Max = 80000},
+                    new TaxBracket {Rate = 0.40, Min = 80001, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxRatesList.Add(rates);
+            incomeTaxBracketsList.Add(rates);
             rates = new IncomeTaxRates
             {
                 FinancialYear = 2008,
-                TaxRates = new List<TaxRate>
+                TaxBrackets = new List<TaxBracket>
                 {
-                    new TaxRate {Rate = 0,    TaxableIncomeStart = 0,     TaxableIncomeEnd = 6000},
-                    new TaxRate {Rate = 0.15, TaxableIncomeStart =  6001, TaxableIncomeEnd = 25000},
-                    new TaxRate {Rate = 0.30, TaxableIncomeStart = 25001, TaxableIncomeEnd = 80000},
-                    new TaxRate {Rate = 0.40, TaxableIncomeStart = 80001, TaxableIncomeEnd = 180000},
-                    new TaxRate {Rate = 0.45, TaxableIncomeStart = 180001,TaxableIncomeEnd = 999999999}
+                    new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
+                    new TaxBracket {Rate = 0.15, Min =  6001, Max = 25000},
+                    new TaxBracket {Rate = 0.30, Min = 25001, Max = 80000},
+                    new TaxBracket {Rate = 0.40, Min = 80001, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
                 }
             };
-            incomeTaxRatesList.Add(rates);
+            incomeTaxBracketsList.Add(rates);
 
             return incomeTaxRatesList;
         }
