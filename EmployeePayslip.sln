@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain", "EmployeePayslip.Domain\EmployeePayslip.Domain.csproj", "{32ACDCCB-58DF-4E77-9C88-BAA87D8F527B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.DataAccess", "EmployeePayslip.DataAccess\EmployeePayslip.DataAccess.csproj", "{72A4E965-6FFE-48BD-BE5E-699F0463C294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Models", "EmployeePayslip.Models\EmployeePayslip.Models.csproj", "{5A59102A-0B7B-4E18-9540-1053904C5638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Console", "EmployeePayslip.Console\EmployeePayslip.Console.csproj", "{72278523-041D-4C6E-B772-BE7DBA40FA21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain.Interfaces", "EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain.Interfaces.csproj", "{AE0A722D-1AD9-41A8-ACCF-3910F6D894E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.DataAccess.Interfaces", "EmployeePayslip.DataAccess.Interfaces\EmployeePayslip.DataAccess.Interfaces.csproj", "{22AA257F-857D-49D7-9B7A-6E2C105EDD89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Presentation", "01. Presentation", "{02427D2E-D265-4C8D-8CAD-9BBFF35869D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Domain", "02. Domain", "{A585FA55-B24D-4202-BE98-FA0DC573D9F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. DataAccess", "04. DataAccess", "{BC313BCF-52FF-4177-A07C-9D2F1BB95C7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Common", "03. Common", "{89379238-4E8C-4615-905E-ECAE2BF3DBCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. Unit Tests", "09. Unit Tests", "{F49543C4-21DA-4322-BD94-18A6717325EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Domain.UnitTests", "EmployeePayslip.Domain.UnitTests\EmployeePayslip.Domain.UnitTests.csproj", "{725B7034-DB31-4E37-A77F-266236D0E8E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32ACDCCB-58DF-4E77-9C88-BAA87D8F527B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32ACDCCB-58DF-4E77-9C88-BAA87D8F527B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32ACDCCB-58DF-4E77-9C88-BAA87D8F527B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32ACDCCB-58DF-4E77-9C88-BAA87D8F527B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72A4E965-6FFE-48BD-BE5E-699F0463C294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A4E965-6FFE-48BD-BE5E-699F0463C294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A4E965-6FFE-48BD-BE5E-699F0463C294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A4E965-6FFE-48BD-BE5E-699F0463C294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A59102A-0B7B-4E18-9540-1053904C5638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A59102A-0B7B-4E18-9540-1053904C5638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A59102A-0B7B-4E18-9540-1053904C5638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A59102A-0B7B-4E18-9540-1053904C5638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72278523-041D-4C6E-B772-BE7DBA40FA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72278523-041D-4C6E-B772-BE7DBA40FA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72278523-041D-4C6E-B772-BE7DBA40FA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72278523-041D-4C6E-B772-BE7DBA40FA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0A722D-1AD9-41A8-ACCF-3910F6D894E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0A722D-1AD9-41A8-ACCF-3910F6D894E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0A722D-1AD9-41A8-ACCF-3910F6D894E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0A722D-1AD9-41A8-ACCF-3910F6D894E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22AA257F-857D-49D7-9B7A-6E2C105EDD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22AA257F-857D-49D7-9B7A-6E2C105EDD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22AA257F-857D-49D7-9B7A-6E2C105EDD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22AA257F-857D-49D7-9B7A-6E2C105EDD89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725B7034-DB31-4E37-A77F-266236D0E8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725B7034-DB31-4E37-A77F-266236D0E8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725B7034-DB31-4E37-A77F-266236D0E8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725B7034-DB31-4E37-A77F-266236D0E8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32ACDCCB-58DF-4E77-9C88-BAA87D8F527B} = {A585FA55-B24D-4202-BE98-FA0DC573D9F8}
+		{72A4E965-6FFE-48BD-BE5E-699F0463C294} = {BC313BCF-52FF-4177-A07C-9D2F1BB95C7F}
+		{5A59102A-0B7B-4E18-9540-1053904C5638} = {89379238-4E8C-4615-905E-ECAE2BF3DBCC}
+		{72278523-041D-4C6E-B772-BE7DBA40FA21} = {02427D2E-D265-4C8D-8CAD-9BBFF35869D3}
+		{AE0A722D-1AD9-41A8-ACCF-3910F6D894E1} = {A585FA55-B24D-4202-BE98-FA0DC573D9F8}
+		{22AA257F-857D-49D7-9B7A-6E2C105EDD89} = {BC313BCF-52FF-4177-A07C-9D2F1BB95C7F}
+		{725B7034-DB31-4E37-A77F-266236D0E8E9} = {F49543C4-21DA-4322-BD94-18A6717325EA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {441E5274-BB62-484B-B48B-DE081F38692F}
+	EndGlobalSection
+EndGlobal

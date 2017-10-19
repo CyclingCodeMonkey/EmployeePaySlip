@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeePayslip.DataAccess.Interfaces\EmployeePayslip.DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\EmployeePayslip.Models\EmployeePayslip.Models.csproj" />
+  </ItemGroup>
+
+</Project>
