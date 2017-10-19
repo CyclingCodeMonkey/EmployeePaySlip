@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace EmployeePayslip.Models
 {
@@ -6,5 +6,17 @@ namespace EmployeePayslip.Models
     {
         public int FinancialYear { get; set; }
         public IList<TaxRate> TaxRates { get; set; }
+    }
+
+    public class Person
+    {
+    	public string FirstName { get; set; }
+    	public string LastName { get; set; }
+    	public int AnnualSalary { get; set; }
+    	public double SuperRate { get; set; }
+    	public int Super { get; set; }
+    	public int GrossSalary { get; set; }
+    	public int IncomeTax { get; set; }
+    	public string PayPeriod { get; set; }
     }
 }
