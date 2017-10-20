@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EmployeePayslip.Models;
 using Microsoft.Extensions.CommandLineUtils;
 
 namespace EmployeePayslip.Console
@@ -46,5 +47,10 @@ namespace EmployeePayslip.Console
         {
             System.Console.WriteLine(greeting);
         }
+        
+        private static void DisplayIndividualEmployeePayslips(IList<Person> persons)
+        { 
+    }
+        
     }
 }

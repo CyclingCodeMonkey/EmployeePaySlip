@@ -9,4 +9,10 @@
     <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeePayslip.Domain.Interfaces\EmployeePayslip.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\EmployeePayslip.Domain\EmployeePayslip.Domain.csproj" />
+    <ProjectReference Include="..\EmployeePayslip.Models\EmployeePayslip.Models.csproj" />
+  </ItemGroup>
+
 </Project>
