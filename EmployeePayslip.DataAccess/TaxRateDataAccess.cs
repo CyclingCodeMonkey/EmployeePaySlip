@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EmployeePayslip.DataAccess.Interfaces;
 using EmployeePayslip.Models;
@@ -14,10 +15,11 @@ namespace EmployeePayslip.DataAccess
             {
                 throw new NotImplementedException("Income Tax Rates implemented for Australia only.");
             }
-
-            return null;
+            await Task.Delay(15);       // to simulate database access
+            var incomeTaxBackets = GetIncomeTaxBrackets();
+            
+            return incomeTaxBackets.FirstOrDefault();
         }
-
 
         private IList<IncomeTaxRates> GetIncomeTaxBrackets()
         {
@@ -30,10 +32,10 @@ namespace EmployeePayslip.DataAccess
                 TaxBrackets = new List<TaxBracket>
                 {
                     new TaxBracket {Rate = 0,    Min = 0,     Max = 18200},
-                    new TaxBracket {Rate = 0.19, Min = 18201, Max = 37000},
-                    new TaxBracket {Rate = 0.325,Min = 37001, Max = 87000},
-                    new TaxBracket {Rate = 0.37, Min = 87001, Max = 180000},
-                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
+                    new TaxBracket {Rate = 0.19, Min = 18200, Max = 37000},
+                    new TaxBracket {Rate = 0.325,Min = 37000, Max = 88000},
+                    new TaxBracket {Rate = 0.37, Min = 88000, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180000,Max = 999999999}
                 }
             };
             incomeTaxRatesList.Add(rates);
@@ -43,10 +45,10 @@ namespace EmployeePayslip.DataAccess
                 TaxBrackets = new List<TaxBracket>
                 {
                     new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
-                    new TaxBracket {Rate = 0.15, Min = 6001,  Max = 37000},
-                    new TaxBracket {Rate = 0.30, Min = 37001, Max = 80000},
-                    new TaxBracket {Rate = 0.37, Min = 80001, Max = 180000},
-                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
+                    new TaxBracket {Rate = 0.15, Min = 6000,  Max = 37000},
+                    new TaxBracket {Rate = 0.30, Min = 37000, Max = 80000},
+                    new TaxBracket {Rate = 0.37, Min = 80000, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180000,Max = 999999999}
                 }
             };
             incomeTaxRatesList.Add(rates);
@@ -57,10 +59,10 @@ namespace EmployeePayslip.DataAccess
                 TaxBrackets = new List<TaxBracket>
                 {
                     new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
-                    new TaxBracket {Rate = 0.15, Min = 6001,  Max = 35000},
-                    new TaxBracket {Rate = 0.30, Min = 35001, Max = 80000},
-                    new TaxBracket {Rate = 0.38, Min = 80001, Max = 180000},
-                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
+                    new TaxBracket {Rate = 0.15, Min = 6000,  Max = 35000},
+                    new TaxBracket {Rate = 0.30, Min = 35000, Max = 80000},
+                    new TaxBracket {Rate = 0.38, Min = 80000, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180000,Max = 999999999}
                 }
             };
             incomeTaxRatesList.Add(rates);
@@ -70,10 +72,10 @@ namespace EmployeePayslip.DataAccess
                 TaxBrackets = new List<TaxBracket>
                 {
                     new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
-                    new TaxBracket {Rate = 0.15, Min = 6001,  Max = 34000},
-                    new TaxBracket {Rate = 0.30, Min = 34001, Max = 80000},
-                    new TaxBracket {Rate = 0.40, Min = 80001, Max = 180000},
-                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
+                    new TaxBracket {Rate = 0.15, Min = 6000,  Max = 34000},
+                    new TaxBracket {Rate = 0.30, Min = 34000, Max = 80000},
+                    new TaxBracket {Rate = 0.40, Min = 80000, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180000,Max = 999999999}
                 }
             };
             incomeTaxRatesList.Add(rates);
@@ -83,10 +85,10 @@ namespace EmployeePayslip.DataAccess
                 TaxBrackets = new List<TaxBracket>
                 {
                     new TaxBracket {Rate = 0,    Min = 0,     Max = 6000},
-                    new TaxBracket {Rate = 0.15, Min =  6001, Max = 25000},
-                    new TaxBracket {Rate = 0.30, Min = 25001, Max = 80000},
-                    new TaxBracket {Rate = 0.40, Min = 80001, Max = 180000},
-                    new TaxBracket {Rate = 0.45, Min = 180001,Max = 999999999}
+                    new TaxBracket {Rate = 0.15, Min =  6000, Max = 25000},
+                    new TaxBracket {Rate = 0.30, Min = 25000, Max = 80000},
+                    new TaxBracket {Rate = 0.40, Min = 80000, Max = 180000},
+                    new TaxBracket {Rate = 0.45, Min = 180000,Max = 999999999}
                 }
             };
             incomeTaxRatesList.Add(rates);

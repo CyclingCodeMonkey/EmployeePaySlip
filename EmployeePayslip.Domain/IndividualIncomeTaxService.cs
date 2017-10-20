@@ -10,11 +10,11 @@ namespace EmployeePayslip.Domain
 {
     public class IndividualIncomeTaxService : IIndividualIncomeTaxService
     {
-        const double months = 12;
-        int _incomeTax = -1;
-        int _previousAnnualSalary = 0;
+        private const double Months = 12;
+        private int _incomeTax = -1;
+        private int _previousAnnualSalary = 0;
 
-        readonly ITaxRateDataAccess _taxRateDataAccess;
+        private readonly ITaxRateDataAccess _taxRateDataAccess;
 
         public IndividualIncomeTaxService()
         {
@@ -28,7 +28,7 @@ namespace EmployeePayslip.Domain
 
         public int CalculateGrossIncome(double annualSalary)
         {
-            var grossIncome = annualSalary / months;
+            var grossIncome = annualSalary / Months;
             return (int) Math.Round(grossIncome, MidpointRounding.AwayFromZero);
         }
 
@@ -41,23 +41,30 @@ namespace EmployeePayslip.Domain
             }
             _incomeTax = 0;
             _previousAnnualSalary = annualSalary;
-            // get the income tax rates for the current year
+            
+            var taxRates = await _taxRateDataAccess.GetIndividualIncomeTaxRatesAsync(financialYear);
             // if nothing is returned then throw error
-            var taxRates = new IncomeTaxRates();
-            double incomeTax = 0.0;
+
+            var incomeTax = CalculateIncomeTax(annualSalary, taxRates);
+            _incomeTax = (int)Math.Round(incomeTax, MidpointRounding.AwayFromZero);
+            return _incomeTax;
+        }
+
+        private static double CalculateIncomeTax(int annualSalary, IncomeTaxRates taxRates)
+        {
+            var incomeTax = 0.0D;
             foreach (var taxBracket in taxRates.TaxBrackets)
             {
                 if (annualSalary > taxBracket.Max)
                 {
                     incomeTax += taxBracket.Amount;
                 }
-                else //if (annualSalary <=  taxBracket.max)
-                { 
-                    incomeTax += (annualSalary - taxBracket.Max) * taxBracket.Rate; 
+                if (taxBracket.Min < annualSalary && annualSalary <=  taxBracket.Max)
+                {
+                    incomeTax += (annualSalary - taxBracket.Min) * taxBracket.Rate;
                 }
             }
-            _incomeTax = (int)Math.Round(incomeTax, MidpointRounding.AwayFromZero);
-            return _incomeTax;
+            return incomeTax;
         }
 
         public async Task<int> CalculateNetIncomeAsync(int annualSalary, 
