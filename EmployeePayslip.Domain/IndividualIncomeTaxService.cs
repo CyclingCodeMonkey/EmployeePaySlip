@@ -70,8 +70,8 @@ namespace EmployeePayslip.Domain
         public async Task<int> CalculateNetIncomeAsync(int annualSalary, 
                                                        int financialYear = 2018)
         {
-            return CalculateGrossIncome(annualSalary) 
-                - (await CalculateIncomeTaxAsync(annualSalary, financialYear));
+            var incomeTax = await CalculateIncomeTaxAsync(annualSalary, financialYear);
+            return annualSalary - incomeTax;
         }
 
         public int CalculateSuper(double annualSalary, double superRate)

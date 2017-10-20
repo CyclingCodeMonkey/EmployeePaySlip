@@ -50,6 +50,22 @@ namespace EmployeePayslip.Domain.UnitTests
         }
 
         [TestMethod]
+        public void IndividualIncomeTaxService_CalculateSuper_ShouldReturnZero_Test()
+        {
+            var target = new IndividualIncomeTaxService(_taxRateDataAccess);
+            var actual = target.CalculateSuper(18000, 0D);
+            Assert.AreEqual(0, actual);
+        }
+
+        [TestMethod]
+        public void IndividualIncomeTaxService_CalculateSuper_ShouldReturn1000_Test()
+        {
+            var target = new IndividualIncomeTaxService(_taxRateDataAccess);
+            var actual = target.CalculateSuper(12000, 0.09D);
+            Assert.AreEqual(90, actual);
+        }
+
+        [TestMethod]
         public async Task IndividualIncomeTaxService_CalculateIncomeTaxAsync_ShouldReturn0Tax_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
@@ -78,7 +94,17 @@ namespace EmployeePayslip.Domain.UnitTests
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
             var actual = await target.CalculateIncomeTaxAsync(200000);
-            Assert.AreEqual(63232, actual);
+            Assert.AreEqual(63547, actual);
+        }
+
+        [TestMethod]
+        public async Task IndividualIncomeTaxService_CalculateNetIncomeAsync_SalaryOver180000_Test()
+        {
+            var target = new IndividualIncomeTaxService(_taxRateDataAccess);
+            var netIncome = await target.CalculateNetIncomeAsync(200000);
+            var incomeTax = await target.CalculateIncomeTaxAsync(200000);
+            Assert.AreEqual(136453, netIncome);
+            Assert.AreEqual(63547, incomeTax);
         }
     }
 }
