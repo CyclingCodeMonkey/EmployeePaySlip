@@ -6,11 +6,11 @@ This README would normally document whatever steps are necessary to get your app
 
 * Emoloyee Payslip Coding Excercise 
 * To caclculate the followig 
-  * income tax for an individual based upon the gross annual salary
-  * Monthly Net income
-  * Monthly Gross income
-  * Monthly Super contributions based upon input value 
-  * the input file is formatted correctly
+	* income tax for an individual based upon the gross annual salary
+	* Monthly Net income
+	* Monthly Gross income
+	* Monthly Super contributions based upon input value 
+	* the input file is formatted correctly
 
 
 ### How do I get set up? ###
@@ -27,6 +27,7 @@ This README would normally document whatever steps are necessary to get your app
 * For Mac users open a terminal session, change location to where the root of the source code folder and run the following commands : 
 
      dotnet test EmployeePayslip.Domain.UnitTests
+	 
      dotnet test EmployeePayslip.DataAccess.UnitTests
 
 
