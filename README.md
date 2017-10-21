@@ -16,15 +16,18 @@ This README would normally document whatever steps are necessary to get your app
 ### How do I get set up? ###
 
 * This solution requires .Net Core 2.0
-* 
+* Extract the solution into a folder
+* At the root of the Employee Payslip folder run the followig command to build
+  <pre>dotnet build EmployeePayslip.Console</pre>
 
 
 ### How to run tests ###
 * To run tests, best performed from the command line.  Change directory to where the root of the source code and run "runTests.cmd" (note this will only for for Windows machines only)
 * For Mac users open a terminal session, change location to where the root of the source code folder and run the following commands : 
-    dotnet test EmployeePayslip.Domain.UnitTests
+    <code>
+	dotnet test EmployeePayslip.Domain.UnitTests
     dotnet test EmployeePayslip.DataAccess.UnitTests
-
+</code>
 
 ### Assumptions ###
 
@@ -33,4 +36,5 @@ This README would normally document whatever steps are necessary to get your app
 * For current financial year income tax only
 * No salary sacrifice
 * No Levies are included, e.g. Medicare, Flood, etc
+* Throwing an exception and stopping the processing of Employee Payslip is satisfactory.
 
