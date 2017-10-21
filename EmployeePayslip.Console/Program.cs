@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using EmployeePayslip.Domain;
 using EmployeePayslip.Models;
 using Microsoft.Extensions.CommandLineUtils;
 
@@ -9,11 +11,11 @@ namespace EmployeePayslip.Console
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Welcome to Employee Payslip Evlauator");
-
-            CommandLineApplication commandLineApplication =
+            var commandLineApplication =
                 new CommandLineApplication(throwOnUnexpectedArg: false);
-            CommandOption filenameOption = commandLineApplication.Option(
+            commandLineApplication.Description = "Employee Payslip Evalator processes employee annual salaries from an input file to generate their payslips";
+            commandLineApplication.FullName = "Employee Payslip Evalator";
+            var filenameOption = commandLineApplication.Option(
                 "-f | --file <filename>", "the name of the comma separated file to " +
                                           "containing individual employee payslips " +
                                           "to evaluate", CommandOptionType.SingleValue);
@@ -22,28 +24,27 @@ namespace EmployeePayslip.Console
             {
                 if (filenameOption.HasValue())
                 {
-                    System.Console.WriteLine("filename=" + filenameOption.Value());
+                    System.Console.WriteLine($"Welcome to {commandLineApplication.Description}");
+                    var individualService = new IndividualService();
+                    var employees = individualService.LoadFromFileAsync(filenameOption.Value()).Result;
+                    
+                    DisplayIndividualEmployeePayslips(employees);
                 }
                 return 0;
             });
             commandLineApplication.Execute(args);
-            System.Console.ReadLine();
         }
 
-        private static void DisplayIndividualEmployeePayslips(IList<Person> persons)
+        private static void DisplayIndividualEmployeePayslips(IList<Employee> persons)
         {
-            System.Console.WriteLine("Output (Name, Pay Perion, Gross Income, Income Tax, Net Income, SUper)");
+            System.Console.WriteLine("Output (Name, Pay Perion, Gross Income, Income Tax, Net Income, Super)");
             foreach (var person in persons)
             {
                 System.Console.WriteLine($"{person.Name}, {person.PayPeriod}, {person.GrossIncome}, {person.IncomeTax}, {person.NetIncome}, {person.Super}");
             }
         }
 
-        private static void ReadFile()
-        {
-            // check that the file exists
-            // try to open the file
-            // read the file parse and return some objects
-        }
+        
+        
     }
 }
