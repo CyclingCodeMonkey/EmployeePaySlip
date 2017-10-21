@@ -9,32 +9,20 @@ namespace EmployeePayslip.Console
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello World!");
+            System.Console.WriteLine("Welcome to Employee Payslip Evlauator");
 
             CommandLineApplication commandLineApplication =
                 new CommandLineApplication(throwOnUnexpectedArg: false);
-            CommandArgument names = null;
-            commandLineApplication.Command("name",
-                (target) =>
-                    names = target.Argument(
-                        "fullname",
-                        "Enter the full name of the person to be greeted.",
-                        multipleValues: true));
-            CommandOption greeting = commandLineApplication.Option(
-                "-$|-g |--greeting <greeting>",
-                "The greeting to display. The greeting supports"
-                + " a format string where {fullname} will be "
-                + "substituted with the full name.",
-                CommandOptionType.SingleValue);
-            CommandOption uppercase = commandLineApplication.Option(
-                "-u | --uppercase", "Display the greeting in uppercase.",
-                CommandOptionType.NoValue);
+            CommandOption filenameOption = commandLineApplication.Option(
+                "-f | --file <filename>", "the name of the comma separated file to " +
+                                          "containing individual employee payslips " +
+                                          "to evaluate", CommandOptionType.SingleValue);
             commandLineApplication.HelpOption("-? | -h | --help");
             commandLineApplication.OnExecute(() =>
             {
-                if (greeting.HasValue())
+                if (filenameOption.HasValue())
                 {
-                    Greet(greeting.Value(), names.Values, uppercase.HasValue());
+                    System.Console.WriteLine("filename=" + filenameOption.Value());
                 }
                 return 0;
             });
@@ -42,15 +30,20 @@ namespace EmployeePayslip.Console
             System.Console.ReadLine();
         }
 
-        private static void Greet(
-            string greeting, IEnumerable<string> values, bool useUppercase)
-        {
-            System.Console.WriteLine(greeting);
-        }
-        
         private static void DisplayIndividualEmployeePayslips(IList<Person> persons)
-        { 
-    }
-        
+        {
+            System.Console.WriteLine("Output (Name, Pay Perion, Gross Income, Income Tax, Net Income, SUper)");
+            foreach (var person in persons)
+            {
+                System.Console.WriteLine($"{person.Name}, {person.PayPeriod}, {person.GrossIncome}, {person.IncomeTax}, {person.NetIncome}, {person.Super}");
+            }
+        }
+
+        private static void ReadFile()
+        {
+            // check that the file exists
+            // try to open the file
+            // read the file parse and return some objects
+        }
     }
 }

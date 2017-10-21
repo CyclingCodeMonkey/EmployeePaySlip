@@ -10,6 +10,7 @@ This README would normally document whatever steps are necessary to get your app
   * Monthly Net income
   * Monthly Gross income
   * Monthly Super contributions based upon input value 
+  * the input file is formatted correctly
 
 
 ### How do I get set up? ###

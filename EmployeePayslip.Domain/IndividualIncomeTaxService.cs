@@ -35,6 +35,9 @@ namespace EmployeePayslip.Domain
         public async Task<int> CalculateIncomeTaxAsync(int annualSalary, 
                                                        int financialYear = 2018)
         {
+            if (annualSalary <= 0)
+                return 0;
+            
             if (_incomeTax >= 0 && annualSalary == _previousAnnualSalary)
             {
                 return _incomeTax;
