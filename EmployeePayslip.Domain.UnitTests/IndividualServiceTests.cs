@@ -57,6 +57,42 @@ namespace EmployeePayslip.Domain.UnitTests
         }
 
         [TestMethod]
+        public void CalcululateIndividualPayslipsAsync_InvalidAnnualSalary_ShouldThrowArgumentOutOfRangeException_Test()
+        {
+            var employees = new List<Employee>
+            {
+                new Employee
+                {
+                    AnnualSalary = -1,
+                    FirstName = "John",
+                    LastName = "Smith",
+                    SuperRate = 0.10D
+                }
+            };
+            var target = new IndividualService(_individualIncomeTaxService);
+            Action act = () => target.CalcululateIndividualPayslipsAsync(employees).GetAwaiter().GetResult();
+            act.ShouldThrow<ArgumentOutOfRangeException>().WithMessage("Specified argument was out of the range of valid values.\r\nParameter name: AnnualSalary");
+        }
+
+        [TestMethod]
+        public void CalcululateIndividualPayslipsAsync_InvalidSuperRate_ShouldThrowArgumentOutOfRangeException_Test()
+        {
+            var employees = new List<Employee>
+            {
+                new Employee
+                {
+                    AnnualSalary = 60000,
+                    FirstName = "John",
+                    LastName = "Smith",
+                    SuperRate = 1.00D
+                }
+            };
+            var target = new IndividualService(_individualIncomeTaxService);
+            Action act = () => target.CalcululateIndividualPayslipsAsync(employees).GetAwaiter().GetResult();
+            act.ShouldThrow<ArgumentOutOfRangeException>().WithMessage("Specified argument was out of the range of valid values.\r\nParameter name: SuperRate");
+        }
+
+        [TestMethod]
         public void LoadFromFileAsync_InvalidFile_ShouldThrowArgumentException_Test()
         {
             var target = new IndividualService(_individualIncomeTaxService);

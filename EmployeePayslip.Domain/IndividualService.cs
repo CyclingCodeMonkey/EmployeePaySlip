@@ -25,26 +25,8 @@ namespace EmployeePayslip.Domain
         {
             var employees = await LoadFromFileAsync(filename);
             
-            // validate the employees
-            ValidateEmployees(employees);
-
             employees = await CalcululateIndividualPayslipsAsync(employees);
             return employees;
-        }
-
-        private static void ValidateEmployees(IList<Employee> employees)
-        {
-            foreach (var employee in employees)
-            {
-                if (employee.AnnualSalary < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(employee.AnnualSalary));
-                }
-                if (employee.SuperRate <= 0 || employee.SuperRate >= 100)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(employee.SuperRate));
-                }
-            }
         }
 
         public async Task<IList<Employee>> LoadFromFileAsync(string filename)
@@ -77,6 +59,8 @@ namespace EmployeePayslip.Domain
         {
             foreach (var employee in employees)
             {
+                ValidateEmployee(employee);
+                    
                 var annualSalary = employee.AnnualSalary;
                 employee.GrossIncome = _individualIncomeTaxService.CalculateMonthlyGrossIncome(annualSalary);
                 employee.IncomeTax = await _individualIncomeTaxService.CalculateMonthlyIncomeTaxAsync(annualSalary);
@@ -85,6 +69,19 @@ namespace EmployeePayslip.Domain
             }
             
             return employees;
+        }
+
+        private static void ValidateEmployee(Employee employee)
+        {
+            if (employee.AnnualSalary < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(employee.AnnualSalary));
+            }
+            if (employee.SuperRate <= 0 || employee.SuperRate >= 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(employee.SuperRate));
+            }
+
         }
 
         private Employee ConvertToEmployee(string employeeLine)
