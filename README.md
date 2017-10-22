@@ -21,7 +21,8 @@ This README would normally document whatever steps are necessary to get your app
 
      dotnet build EmployeePayslip.Console.csproj
 	 
-* To run Employee Payslip with sample data run the following command (from a "Developer Command Prompt)
+* To run Employee Payslip with sample data run the following command (from a "Developer Command Prompt")
+
 	 BuildAndRun.cmd
 
 
@@ -32,6 +33,9 @@ This README would normally document whatever steps are necessary to get your app
      dotnet test EmployeePayslip.Domain.UnitTests
 	 
      dotnet test EmployeePayslip.DataAccess.UnitTests
+or simply run from a "Developer Command Prompt"
+
+	 runTests.cmd
 
 
 ### Assumptions ###
