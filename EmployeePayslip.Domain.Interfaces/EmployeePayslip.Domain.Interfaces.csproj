@@ -8,4 +8,8 @@
     <Compile Remove="EmployeePayslip.Domain\IndividualIncomeTaxService.cs" />
     <Compile Remove="EmployeePayslip.Domain\obj\Debug\netcoreapp2.0\EmployeePayslip.Domain.AssemblyInfo.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeePayslip.Models\EmployeePayslip.Models.csproj" />
+  </ItemGroup>
 </Project>

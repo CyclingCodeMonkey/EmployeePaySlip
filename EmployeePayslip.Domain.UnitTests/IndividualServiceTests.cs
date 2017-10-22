@@ -63,6 +63,5 @@ namespace EmployeePayslip.Domain.UnitTests
             Action act = () => target.LoadFromFileAsync("C:\\data\\employees.csv").GetAwaiter().GetResult();
             act.ShouldThrow<ArgumentException>().WithMessage("Employee Payslip file does not exist");
         }
-
     }
 }

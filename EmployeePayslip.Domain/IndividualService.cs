@@ -7,7 +7,7 @@ using EmployeePayslip.Models;
 
 namespace EmployeePayslip.Domain
 {
-    public class IndividualService
+    public class IndividualService : IIndividualService
     {
         private readonly IIndividualIncomeTaxService _individualIncomeTaxService;
 
@@ -26,9 +26,25 @@ namespace EmployeePayslip.Domain
             var employees = await LoadFromFileAsync(filename);
             
             // validate the employees
+            ValidateEmployees(employees);
 
             employees = await CalcululateIndividualPayslipsAsync(employees);
             return employees;
+        }
+
+        private static void ValidateEmployees(IList<Employee> employees)
+        {
+            foreach (var employee in employees)
+            {
+                if (employee.AnnualSalary < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(employee.AnnualSalary));
+                }
+                if (employee.SuperRate <= 0 || employee.SuperRate >= 100)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(employee.SuperRate));
+                }
+            }
         }
 
         public async Task<IList<Employee>> LoadFromFileAsync(string filename)
