@@ -17,7 +17,7 @@ namespace EmployeePayslip.DataAccess
             }
             await Task.Delay(15);       // to simulate database access
             var incomeTaxBackets = GetIncomeTaxBrackets();
-            
+            // TODO return the first instance, but should perform a query based upon the financial year requested.
             return incomeTaxBackets.FirstOrDefault();
         }
 

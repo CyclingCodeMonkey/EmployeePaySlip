@@ -17,9 +17,12 @@ This README would normally document whatever steps are necessary to get your app
 
 * This solution requires .Net Core 2.0
 * Extract the solution into a folder
-* At the root of the Employee Payslip folder run the followig command to build
+* At the root of the Employee Payslip folder run the following command to build (from a "Developer Command Prompt i.e. a command prompt with access to .Net Core)
 
-     dotnet build EmployeePayslip.Console
+     dotnet build EmployeePayslip.Console.csproj
+	 
+* To run Employee Payslip with sample data run the following command (from a "Developer Command Prompt)
+	 BuildAndRun.cmd
 
 
 ### How to run tests ###

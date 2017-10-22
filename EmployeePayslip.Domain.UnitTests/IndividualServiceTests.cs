@@ -10,6 +10,10 @@ using NSubstitute;
 
 namespace EmployeePayslip.Domain.UnitTests
 {
+    // TODO create and mock out the file.open see 
+    //  https://stackoverflow.com/questions/11141314/mocking-a-using-with-a-filestream
+    
+
     [TestClass]
     public class IndividualServiceTests
     {
@@ -97,6 +101,14 @@ namespace EmployeePayslip.Domain.UnitTests
         {
             var target = new IndividualService(_individualIncomeTaxService);
             Action act = () => target.LoadFromFileAsync("C:\\data\\employees.csv").GetAwaiter().GetResult();
+            act.ShouldThrow<ArgumentException>().WithMessage("Employee Payslip file does not exist");
+        }
+
+        [TestMethod]
+        public void LoadFromFileAndCalculatePayslipAsync_InvalidFile_ShouldThrowArgumentException_Test()
+        {
+            var target = new IndividualService(_individualIncomeTaxService);
+            Action act = () => target.LoadFromFileAndCalculatePayslipAsync("C:\\data\\employees.csv").GetAwaiter().GetResult();
             act.ShouldThrow<ArgumentException>().WithMessage("Employee Payslip file does not exist");
         }
     }

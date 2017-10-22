@@ -46,8 +46,5 @@ namespace EmployeePayslip.Console
                 System.Console.WriteLine($"{person.Name}, {person.PayPeriod}, {person.GrossIncome}, {person.IncomeTax}, {person.NetIncome}, {person.Super}");
             }
         }
-
-        
-        
     }
 }
