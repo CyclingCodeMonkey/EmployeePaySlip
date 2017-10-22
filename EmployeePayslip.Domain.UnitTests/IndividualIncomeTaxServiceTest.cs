@@ -35,7 +35,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public void IndividualIncomeTaxService_CalculateGrossIncome_ShouldReturnZero_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = target.CalculateGrossIncome(0);
+            var actual = target.CalculateMonthlyGrossIncome(0);
             Assert.AreEqual(0,actual);
         }
 
@@ -43,7 +43,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public void IndividualIncomeTaxService_CalculateGrossIncome_ShouldReturn1001_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = target.CalculateGrossIncome(12007);
+            var actual = target.CalculateMonthlyGrossIncome(12007);
             Assert.AreEqual(1001, actual);
         }
 
@@ -51,7 +51,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public void IndividualIncomeTaxService_CalculateSuper_ShouldReturnZero_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = target.CalculateSuper(18000, 0D);
+            var actual = target.CalculateMonthlySuper(18000, 0D);
             Assert.AreEqual(0, actual);
         }
 
@@ -59,7 +59,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public void IndividualIncomeTaxService_CalculateSuper_ShouldReturn1000_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = target.CalculateSuper(12000, 0.09D);
+            var actual = target.CalculateMonthlySuper(12000, 0.09D);
             Assert.AreEqual(90, actual);
         }
 
@@ -67,7 +67,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public async Task IndividualIncomeTaxService_CalculateIncomeTaxAsync_ShouldReturn0Tax_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = await target.CalculateIncomeTaxAsync(18200);
+            var actual = await target.CalculateMonthlyIncomeTaxAsync(18200);
             Assert.AreEqual(0, actual);
         }
 
@@ -75,7 +75,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public async Task IndividualIncomeTaxService_CalculateIncomeTaxAsync_ShouldReturn3897Tax_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = await target.CalculateIncomeTaxAsync(38000);
+            var actual = await target.CalculateMonthlyIncomeTaxAsync(38000);
             Assert.AreEqual(3897, actual);
         }
 
@@ -83,7 +83,7 @@ namespace EmployeePayslip.Domain.UnitTests
         public async Task IndividualIncomeTaxService_CalculateIncomeTaxAsync_ShouldReturn11210Tax_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = await target.CalculateIncomeTaxAsync(60500);
+            var actual = await target.CalculateMonthlyIncomeTaxAsync(60500);
             Assert.AreEqual(11210, actual);
         }
 
@@ -91,16 +91,24 @@ namespace EmployeePayslip.Domain.UnitTests
         public async Task IndividualIncomeTaxService_CalculateIncomeTaxAsync_SalaryOver180000_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var actual = await target.CalculateIncomeTaxAsync(200000);
+            var actual = await target.CalculateMonthlyIncomeTaxAsync(200000);
             Assert.AreEqual(63547, actual);
         }
 
         [TestMethod]
+        public async Task IndividualIncomeTaxService_CalculateIncomeTaxAsync_SalaryFor120000_Test()
+        {
+            var target = new IndividualIncomeTaxService(_taxRateDataAccess);
+            var actual = await target.CalculateMonthlyIncomeTaxAsync(120000);
+            Assert.AreEqual(2696, actual);
+        }
+        
+        [TestMethod]
         public async Task IndividualIncomeTaxService_CalculateNetIncomeAsync_SalaryOver180000_Test()
         {
             var target = new IndividualIncomeTaxService(_taxRateDataAccess);
-            var netIncome = await target.CalculateNetIncomeAsync(200000);
-            var incomeTax = await target.CalculateIncomeTaxAsync(200000);
+            var netIncome = await target.CalculateMonthlyNetIncomeAsync(200000);
+            var incomeTax = await target.CalculateMonthlyIncomeTaxAsync(200000);
             Assert.AreEqual(136453, netIncome);
             Assert.AreEqual(63547, incomeTax);
         }

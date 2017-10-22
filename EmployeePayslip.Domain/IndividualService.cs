@@ -60,8 +60,16 @@ namespace EmployeePayslip.Domain
 
         public async Task<IList<Employee>> CalcululateIndividualPayslipsAsync(IList<Employee> employees)
         {
-            await Task.Delay(1);
-            return null;
+            foreach (var employee in employees)
+            {
+                var annualSalary = employee.AnnualSalary;
+                employee.GrossIncome = _individualIncomeTaxService.CalculateMonthlyGrossIncome(annualSalary);
+                employee.IncomeTax = await _individualIncomeTaxService.CalculateMonthlyIncomeTaxAsync(annualSalary);
+                employee.Super = _individualIncomeTaxService.CalculateMonthlySuper(annualSalary, employee.SuperRate);
+                employee.NetIncome = await _individualIncomeTaxService.CalculateMonthlyNetIncomeAsync(annualSalary);
+            }
+            
+            return employees;
         }
 
         private Employee ConvertToEmployee(string employeeLine)
@@ -95,7 +103,7 @@ namespace EmployeePayslip.Domain
             rate = rate.Replace("%", "");
             double.TryParse(rate, out var superRate);
 
-            return superRate;
+            return superRate / 100.0D;
         }
 
     }

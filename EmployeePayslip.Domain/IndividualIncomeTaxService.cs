@@ -26,13 +26,13 @@ namespace EmployeePayslip.Domain
             _taxRateDataAccess = taxRateDataAccess;
         }
 
-        public int CalculateGrossIncome(double annualSalary)
+        public int CalculateMonthlyGrossIncome(double annualSalary)
         {
             var grossIncome = annualSalary / Months;
             return (int) Math.Round(grossIncome, MidpointRounding.AwayFromZero);
         }
 
-        public async Task<int> CalculateIncomeTaxAsync(int annualSalary, 
+        public async Task<int> CalculateMonthlyIncomeTaxAsync(int annualSalary, 
                                                        int financialYear = 2018)
         {
             if (annualSalary <= 0)
@@ -48,7 +48,7 @@ namespace EmployeePayslip.Domain
             var taxRates = await _taxRateDataAccess.GetIndividualIncomeTaxRatesAsync(financialYear);
             // if nothing is returned then throw error
 
-            var incomeTax = CalculateIncomeTax(annualSalary, taxRates);
+            var incomeTax = CalculateIncomeTax(annualSalary, taxRates) / Months;
             _incomeTax = (int)Math.Round(incomeTax, MidpointRounding.AwayFromZero);
             return _incomeTax;
         }
@@ -70,16 +70,16 @@ namespace EmployeePayslip.Domain
             return incomeTax;
         }
 
-        public async Task<int> CalculateNetIncomeAsync(int annualSalary, 
+        public async Task<int> CalculateMonthlyNetIncomeAsync(int annualSalary, 
                                                        int financialYear = 2018)
         {
-            var incomeTax = await CalculateIncomeTaxAsync(annualSalary, financialYear);
-            return annualSalary - incomeTax;
+            var incomeTax = await CalculateMonthlyIncomeTaxAsync(annualSalary, financialYear);
+            return CalculateMonthlyGrossIncome(annualSalary) - incomeTax;
         }
 
-        public int CalculateSuper(double annualSalary, double superRate)
+        public int CalculateMonthlySuper(double annualSalary, double superRate)
         {
-            var super = CalculateGrossIncome(annualSalary) * superRate;
+            var super = CalculateMonthlyGrossIncome(annualSalary) * superRate;
             return (int) Math.Round(super, MidpointRounding.AwayFromZero);
         }
     }

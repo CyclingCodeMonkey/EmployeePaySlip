@@ -12,9 +12,12 @@ namespace EmployeePayslip.Console
         static void Main(string[] args)
         {
             var commandLineApplication =
-                new CommandLineApplication(throwOnUnexpectedArg: false);
-            commandLineApplication.Description = "Employee Payslip Evalator processes employee annual salaries from an input file to generate their payslips";
-            commandLineApplication.FullName = "Employee Payslip Evalator";
+                new CommandLineApplication(throwOnUnexpectedArg: false)
+                {
+                    Description =
+                        "Employee Payslip Evalator processes employee annual salaries from an input file to generate their payslips",
+                    FullName = "Employee Payslip Evalator"
+                };
             var filenameOption = commandLineApplication.Option(
                 "-f | --file <filename>", "the name of the comma separated file to " +
                                           "containing individual employee payslips " +
@@ -26,7 +29,7 @@ namespace EmployeePayslip.Console
                 {
                     System.Console.WriteLine($"Welcome to {commandLineApplication.Description}");
                     var individualService = new IndividualService();
-                    var employees = individualService.LoadFromFileAsync(filenameOption.Value()).Result;
+                    var employees = individualService.LoadFromFileAndCalculatePayslipAsync(filenameOption.Value()).Result;
                     
                     DisplayIndividualEmployeePayslips(employees);
                 }

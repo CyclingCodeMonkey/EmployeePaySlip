@@ -33,8 +33,8 @@ namespace EmployeePayslip.DataAccess
                 {
                     new TaxBracket {Rate = 0,    Min = 0,     Max = 18200},
                     new TaxBracket {Rate = 0.19, Min = 18200, Max = 37000},
-                    new TaxBracket {Rate = 0.325,Min = 37000, Max = 88000},
-                    new TaxBracket {Rate = 0.37, Min = 88000, Max = 180000},
+                    new TaxBracket {Rate = 0.325,Min = 37000, Max = 80000},
+                    new TaxBracket {Rate = 0.37, Min = 80000, Max = 180000},
                     new TaxBracket {Rate = 0.45, Min = 180000,Max = 999999999}
                 }
             };
