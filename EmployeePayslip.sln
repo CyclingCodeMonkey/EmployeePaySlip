@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. DataAccess", "04. DataA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Common", "03. Common", "{89379238-4E8C-4615-905E-ECAE2BF3DBCC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09. Unit Tests", "09. Unit Tests", "{F49543C4-21DA-4322-BD94-18A6717325EA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08. Unit Tests", "08. Unit Tests", "{F49543C4-21DA-4322-BD94-18A6717325EA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePayslip.DataAccess.UnitTests", "EmployeePayslip.DataAccess.UnitTests\EmployeePayslip.DataAccess.UnitTests.csproj", "{214D87A9-91FE-4214-B708-D6FE0A3AA4EB}"
 EndProject
@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePayslip.DataAccess"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePayslip.DataAccess.Interfaces", "EmployeePayslip.DataAccess.Interfaces\EmployeePayslip.DataAccess.Interfaces.csproj", "{844BFEA4-51EA-4730-AAB0-40951F0A76F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayslip.Console", "EmployeePayslip.Console\EmployeePayslip.Console.csproj", "{D01B3361-80EE-429A-9F86-E661AC0CA6E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePayslip.Console", "EmployeePayslip.Console\EmployeePayslip.Console.csproj", "{D01B3361-80EE-429A-9F86-E661AC0CA6E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
