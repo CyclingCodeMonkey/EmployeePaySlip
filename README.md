@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Emoloyee Payslip Coding Excercise 
-* To caclculate the followig 
+* To caclculate the following 
 	* income tax for an individual based upon the gross annual salary
 	* Monthly Net income
 	* Monthly Gross income
